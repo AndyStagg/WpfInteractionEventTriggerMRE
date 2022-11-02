@@ -9,21 +9,15 @@
         
         Title="MainWindow" Height="450" Width="800"
         
-        local:ElipseControl.Select="Window_Select"> <!-- This works as expected -->
-
+        local:ElipseControl.Select="Window_Select">
+    
     <b:Interaction.Triggers>
-        <b:EventTrigger EventName="Select">
-            <b:InvokeCommandAction Command="{Binding ElipseSelectedCommand}" />
-        </b:EventTrigger>
+        <local:RoutedEventTrigger RoutedEvent="local:ElipseControl.Select" >
+            <b:InvokeCommandAction Command="{Binding ElipseSelectedCommand}" PassEventArgsToCommand="True" />
+        </local:RoutedEventTrigger>
     </b:Interaction.Triggers>
-
+    
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-
-        <local:ElipseControl Grid.Row="0" ElipseName="One" />
-        <local:ElipseControl Grid.Row="1" ElipseName="Two" />
+        <ItemsControl ItemsSource="{Binding Elipses}" />
     </Grid>
 </Window>

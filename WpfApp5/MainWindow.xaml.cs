@@ -18,7 +18,7 @@ namespace WpfApp5
 
         private void Window_Select(object sender, RoutedEventArgs e)
         {
-            if (e != null && e.Source != null && e.Source is ElipseControl elipseControl)
+            if (e != null && e.OriginalSource != null && e.OriginalSource is ElipseControl elipseControl)
             {
                 System.Diagnostics.Debug.WriteLine($"Hit Code Behind: {elipseControl.ElipseName}");
             }
